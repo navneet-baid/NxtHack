@@ -20,8 +20,8 @@ const Navbar = () => {
               <SocialFixed />
 
             <nav className="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-                <Link to="/" className="navbar-brand d-flex align-items-center px-4 px-lg-5">
-                    <img src="logo.png" alt="NxtHack Logo" className="me-3" style={{ maxWidth: '150px', height: 'auto' }} />
+                <Link to="/" className="navbar-brand d-flex align-items-center p-4 px-lg-5">
+                    <img src="logo.png" alt="NxtHack Logo" className="me-3 p-3" style={{ maxWidth: '150px', height: 'auto' }} />
                 </Link>
                 <button
                     className="navbar-toggler me-4"
