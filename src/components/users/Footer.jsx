@@ -29,29 +29,6 @@ const Footer = () => {
                             </div>
                         </div>
                         <div className="col-lg-3 col-md-6">
-                            {/* <h4 className="text-white mb-3">Gallery</h4>
-                            <div className="row g-2 pt-2">
-                                <div className="col-4">
-                                    <img className="img-fluid bg-light p-1" src="img/course-1.jpg" alt />
-                                </div>
-                                <div className="col-4">
-                                    <img className="img-fluid bg-light p-1" src="img/course-2.jpg" alt />
-                                </div>
-                                <div className="col-4">
-                                    <img className="img-fluid bg-light p-1" src="img/course-3.jpg" alt />
-                                </div>
-                                <div className="col-4">
-                                    <img className="img-fluid bg-light p-1" src="img/course-2.jpg" alt />
-                                </div>
-                                <div className="col-4">
-                                    <img className="img-fluid bg-light p-1" src="img/course-3.jpg" alt />
-                                </div>
-                                <div className="col-4">
-                                    <img className="img-fluid bg-light p-1" src="img/course-1.jpg" alt />
-                                </div> */}
-                            {/* </div> */}
-                        </div>
-                        <div className="col-lg-3 col-md-6">
                             <h4 className="text-white mb-3">Stay Updated</h4>
                             <p>Sign up for our newsletter to receive the latest updates, news, and exclusive offers directly to your inbox.</p>
                             <div className="position-relative mx-auto" style={{ maxWidth: 400 }}>
@@ -67,8 +44,6 @@ const Footer = () => {
                         <div className="row">
                             <div className="col-md-6 text-center text-md-start mb-3 mb-md-0">
                                 © <NavLink className="border-bottom" to="/">NxtHack</NavLink>, All Right Reserved.
-                                <br />
-                                Designed By <NavLink className="border-bottom" to="https://navneetbaid.000webhostapp.com/">Navneet Baid</NavLink>
                             </div>
                             <div className="col-md-6 text-center text-md-end">
                                 <div className="footer-menu">
