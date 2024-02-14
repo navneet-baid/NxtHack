@@ -21,7 +21,7 @@ const Navbar = () => {
 
             <nav className="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
                 <Link to="/" className="navbar-brand d-flex align-items-center px-4 px-lg-5">
-                    <h2 className="m-0 text-primary"><i className="fa fa-book me-3" />NxtHack</h2>
+                    <img src="logo.png" alt="NxtHack Logo" className="me-3" style={{ maxWidth: '150px', height: 'auto' }} />
                 </Link>
                 <button
                     className="navbar-toggler me-4"

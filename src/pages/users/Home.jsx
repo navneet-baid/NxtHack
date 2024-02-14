@@ -7,6 +7,7 @@ import ServicesSection from '../../components/users/ServicesSection';
 import Footer from '../../components/users/Footer';
 import JoinNowModal from '../../components/users/JoinNowModal';
 import courses from './courses';
+import { NavLink } from 'react-router-dom';
 
 const Home = () => {
   return (
@@ -17,7 +18,7 @@ const Home = () => {
       <ServicesSection />
       <TopProgramSection />
       <CategorySection />
-      <CoursesSection />
+      {/* <CoursesSection /> */}
       <TestimonialSection />
       <Footer />
     </>
@@ -68,8 +69,8 @@ const Carousel = () => {
                     <h5 className=" text-uppercase mb-3 animated slideInDown" style={{ color: 'aliceblue' }}>{item.subtitle}</h5>
                     <h1 className="display-3 text-white animated slideInDown">{item.title}</h1>
                     <p className="fs-5 text-white mb-4 pb-2">{item.description}</p>
-                    <a href className="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Read More</a>
-                    <a href="#" className="btn btn-light py-md-3 px-md-5 animated slideInRight" onClick={handleModalShow}>Join Now</a>
+                    <NavLink to="/contact" className="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Enquire Now</NavLink>
+                    <NavLink to="/registration" className="btn btn-light py-md-3 px-md-5 animated slideInRight">Join Now</NavLink>
                   </div>
                 </div>
               </div>
@@ -425,38 +426,31 @@ const TestimonialSection = () => {
             }}
           >
             <div className="testimonial-item text-center">
-              <img className="border rounded-circle p-2 mx-auto mb-3" src="img/testimonial-1.jpg" style={{ width: 80, height: 80 }} alt="Testimonial 1" />
-              <h5 className="mb-0">Student Name</h5>
-              <p>Profession</p>
+              <img className="border rounded-circle p-2 mx-auto mb-3" src="img/student-1.jpg" style={{ width: 80, height: 80 }} alt="Student 1" />
+              <h5 className="mb-0">Rajesh Patel</h5>
+              <p>Engineering Student</p>
               <div className="testimonial-text bg-light text-center p-4">
-                <p className="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
+                <p className="mb-0">I thoroughly enjoyed learning Python at NxtHack. The course structure was well-designed, and the instructors were extremely knowledgeable. I feel confident in my programming skills now.</p>
               </div>
             </div>
             <div className="testimonial-item text-center">
-              <img className="border rounded-circle p-2 mx-auto mb-3" src="img/testimonial-2.jpg" style={{ width: 80, height: 80 }} alt="Testimonial 2" />
-              <h5 className="mb-0">Student Name</h5>
-              <p>Profession</p>
+              <img className="border rounded-circle p-2 mx-auto mb-3" src="img/student-2.jpg" style={{ width: 80, height: 80 }} alt="Student 2" />
+              <h5 className="mb-0">Priya Sharma</h5>
+              <p>Computer Science Student</p>
               <div className="testimonial-text bg-light text-center p-4">
-                <p className="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
+                <p className="mb-0">The Java course at NxtHack exceeded my expectations. The hands-on projects and assignments helped me understand complex concepts easily. I would highly recommend it to anyone interested in programming.</p>
               </div>
             </div>
             <div className="testimonial-item text-center">
-              <img className="border rounded-circle p-2 mx-auto mb-3" src="img/testimonial-3.jpg" style={{ width: 80, height: 80 }} alt="Testimonial 3" />
-              <h5 className="mb-0">Student Name</h5>
-              <p>Profession</p>
+              <img className="border rounded-circle p-2 mx-auto mb-3" src="img/student-1.jpg" style={{ width: 80, height: 80 }} alt="Student 3" />
+              <h5 className="mb-0">Amit Kumar</h5>
+              <p>Web Developer</p>
               <div className="testimonial-text bg-light text-center p-4">
-                <p className="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-              </div>
-            </div>
-            <div className="testimonial-item text-center">
-              <img className="border rounded-circle p-2 mx-auto mb-3" src="img/testimonial-4.jpg" style={{ width: 80, height: 80 }} alt="Testimonial 4" />
-              <h5 className="mb-0">Student Name</h5>
-              <p>Profession</p>
-              <div className="testimonial-text bg-light text-center p-4">
-                <p className="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
+                <p className="mb-0">Learning React.js at NxtHack was a game-changer for me. The course provided comprehensive coverage of React.js concepts, and the practical exercises helped me enhance my skills significantly.</p>
               </div>
             </div>
           </OwlCarousel>
+
         </div>
       </div>
       {/* Testimonial End */}
