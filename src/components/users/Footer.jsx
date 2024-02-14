@@ -19,7 +19,8 @@ const Footer = () => {
                         <div className="col-lg-3 col-md-6">
                             <h4 className="text-white mb-3">Contact</h4>
                             <p className="mb-2"><i className="fa fa-map-marker-alt me-3" />D-2, G/F, Kh No 265, Plot No 180-F, New Ashok Nagar, Ashok Nagar Police Station, East Delhi, East Delhi-110096, Delhi, India</p>
-                            <p className="mb-2"><i className="fa fa-phone-alt me-3" />+91 9205110948 , +91 9205894280</p>
+                            <p className="mb-2"><i className="fa fa-phone-alt me-3" />+91 9205110948</p>
+                            <p className="mb-2"><i className="fa fa-phone-alt me-3" />+91 9205894280</p>
                             <p className="mb-2"><i className="fa fa-envelope me-3" />info@nxthackitsolutions.com</p>
                             <div className="d-flex pt-2">
                                 <NavLink className="btn btn-outline-light btn-social" to="https://www.youtube.com/@hashCodersClub2001"><i className="fab fa-youtube" /></NavLink>
