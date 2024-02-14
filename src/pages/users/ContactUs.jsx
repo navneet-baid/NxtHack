@@ -69,7 +69,7 @@ const ContactUs = () => {
                                 </div>
                                 <div className="ms-3">
                                     <h5 className="text-primary">Office</h5>
-                                    <p className="mb-0">123 Street, New Delhi, INDIA</p>
+                                    <p className="mb-0">D-2, G/F, Kh No 265, Plot No 180-F, New Ashok Nagar, Ashok Nagar Police Station, East Delhi, East Delhi-110096, Delhi, India</p>
                                 </div>
                             </div>
                             <div className="d-flex align-items-center mb-3">
@@ -78,7 +78,8 @@ const ContactUs = () => {
                                 </div>
                                 <div className="ms-3">
                                     <h5 className="text-primary">Mobile</h5>
-                                    <p className="mb-0">+011 345 67890</p>
+                                    <p className="mb-0">+91 9205110948</p>
+                                    <p className="mb-0">+91 9205894280</p>
                                 </div>
                             </div>
                             <div className="d-flex align-items-center">
@@ -87,7 +88,7 @@ const ContactUs = () => {
                                 </div>
                                 <div className="ms-3">
                                     <h5 className="text-primary">Email</h5>
-                                    <p className="mb-0">help@nxthack.com</p>
+                                    <p className="mb-0">info@nxthackitsolutions.com</p>
                                 </div>
                             </div>
                         </div>
