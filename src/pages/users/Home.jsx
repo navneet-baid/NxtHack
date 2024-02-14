@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import OwlCarousel from 'react-owl-carousel';
 import 'animate.css/animate.min.css';
 import Spinner from '../../components/users/Spinner';
@@ -6,8 +6,7 @@ import Navbar from '../../components/users/Navbar';
 import ServicesSection from '../../components/users/ServicesSection';
 import Footer from '../../components/users/Footer';
 import JoinNowModal from '../../components/users/JoinNowModal';
-import { NavLink } from 'react-router-dom';
-
+import courses from './courses';
 
 const Home = () => {
   return (
@@ -16,10 +15,9 @@ const Home = () => {
       <Navbar />
       <Carousel />
       <ServicesSection />
-      <AboutSection />
+      <TopProgramSection />
       <CategorySection />
       <CoursesSection />
-      <TeamSection />
       <TestimonialSection />
       <Footer />
     </>
@@ -85,52 +83,69 @@ const Carousel = () => {
   );
 };
 
-const AboutSection = () => {
+
+const TopProgramSection = () => {
+  const [showAllCourses, setShowAllCourses] = useState(false);
+  const [subcategories, setSubcategories] = useState([]);
+
+  useEffect(() => {
+    const fetchSubcategories = async () => {
+      try {
+        const subs = courses.flatMap(category =>
+          category.subcategories.flatMap(subcategory => subcategory.courses)
+        );
+        setSubcategories(subs);
+      } catch (error) {
+        console.error("Error fetching subcategories:", error);
+      }
+    };
+    fetchSubcategories();
+  }, []);
+
+  const visibleCourses = showAllCourses ? subcategories : subcategories.slice(0, 6);
+
   return (
     <>
-      {/* About Start */}
+      {/* Explore Top Programs Start */}
       <div className="container-xxl py-5">
         <div className="container">
+          <div className="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 className="section-title bg-white text-center text-primary px-3">Explore Top Programs</h6>
+            <h1 className="mb-5">Best Courses</h1>
+          </div>
           <div className="row g-5">
-            <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style={{ minHeight: 400 }}>
-              <div className="position-relative h-100">
-                <img className="img-fluid position-absolute w-100 h-100" src="img/about.jpg" alt style={{ objectFit: 'cover' }} />
+            <div className="col-lg-12 wow fadeInUp" data-wow-delay="0.3s">
+              <div className="row row-cols-1 row-cols-md-3 g-4">
+                {visibleCourses.map(course => (
+                  <div className="col" key={course.id}>
+                    <div className="card h-100">
+                      <div className="card-body">
+                        <div className="row">
+                          <div className="col-4">
+                            <img src={`img/courses-icon/${course.icon_path}`} alt={course.title} className="img-fluid" />
+                          </div>
+                          <div className="col-8">
+                            <h5 className="card-title">{course.title}</h5>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
-            </div>
-            <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
-              <h6 className="section-title bg-white text-start text-primary pe-3">About Us</h6>
-              <h1 className="mb-4">Welcome to NxtHack</h1>
-              <p className="mb-4">NxtHack IT SOLUTIONS LLP provides online courses to students in various categories. We offer comprehensive learning experiences across a wide range of topics, including programming, web development, data science, cybersecurity, and more.</p>
-              <p className="mb-4">Our mission is to empower learners worldwide to acquire new skills and advance their careers through accessible and high-quality education. At NxtHack, we are committed to fostering a learning community that promotes collaboration, creativity, and innovation.</p>
-              <div className="row gy-2 gx-4 mb-4">
-                <div className="col-sm-6">
-                  <p className="mb-0"><i className="fa fa-arrow-right text-primary me-2" />Expert Instructors</p>
-                </div>
-                <div className="col-sm-6">
-                  <p className="mb-0"><i className="fa fa-arrow-right text-primary me-2" />Flexible Learning</p>
-                </div>
-                <div className="col-sm-6">
-                  <p className="mb-0"><i className="fa fa-arrow-right text-primary me-2" />Interactive Courses</p>
-                </div>
-                <div className="col-sm-6">
-                  <p className="mb-0"><i className="fa fa-arrow-right text-primary me-2" />Practical Projects</p>
-                </div>
-                <div className="col-sm-6">
-                  <p className="mb-0"><i className="fa fa-arrow-right text-primary me-2" />Continuous Support</p>
-                </div>
-                <div className="col-sm-6">
-                  <p className="mb-0"><i className="fa fa-arrow-right text-primary me-2" />Career Development</p>
-                </div>
-              </div>
-              <NavLink className="btn btn-primary py-3 px-5 mt-2" to="/about">Read More</NavLink>
+              {!showAllCourses && (
+                <button className="btn btn-primary mt-3" onClick={() => setShowAllCourses(true)}>View All</button>
+              )}
             </div>
           </div>
         </div>
       </div>
-      {/* About End */}
+      {/* Explore Top Programs End */}
     </>
-  )
-}
+  );
+};
+
+
 
 const CategorySection = () => {
   return (

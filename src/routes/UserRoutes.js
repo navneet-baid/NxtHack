@@ -9,6 +9,10 @@ import '../assets/js/main.js'
 import Error404 from '../pages/users/Error404.jsx';
 import ContactUs from '../pages/users/ContactUs.jsx';
 import AboutUs from '../pages/users/AboutUs.jsx';
+import Certificate from '../pages/users/Certificate.jsx';
+import Registration from '../pages/users/Registration.jsx';
+import Courses from '../pages/users/Courses.jsx';
+import CourseDetail from '../pages/users/CourseDetail.jsx';
 
 const UserRoutes = () => {
     return (
@@ -19,6 +23,14 @@ const UserRoutes = () => {
             <Route path="/contact" element={<ContactUs />} />
             {/* About Us Page */}
             <Route path="/about" element={<AboutUs />} />
+            {/* Certificate  Page */}
+            <Route path="/certificate" element={<Certificate />} />
+            {/* Online Registration  Page */}
+            <Route path="/registration" element={<Registration />} />
+            {/* Courses  Page */}
+            <Route path="/courses" element={<Courses />} />
+            {/* Courses Details  Page */}
+            <Route path="/course-detail/:courseId" element={<CourseDetail />} />
             {/* Error Page */}
             <Route path="*" element={<Error404 />} />
         </Routes>

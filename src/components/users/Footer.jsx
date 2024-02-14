@@ -29,7 +29,7 @@ const Footer = () => {
                             </div>
                         </div>
                         <div className="col-lg-3 col-md-6">
-                            <h4 className="text-white mb-3">Gallery</h4>
+                            {/* <h4 className="text-white mb-3">Gallery</h4>
                             <div className="row g-2 pt-2">
                                 <div className="col-4">
                                     <img className="img-fluid bg-light p-1" src="img/course-1.jpg" alt />
@@ -48,8 +48,8 @@ const Footer = () => {
                                 </div>
                                 <div className="col-4">
                                     <img className="img-fluid bg-light p-1" src="img/course-1.jpg" alt />
-                                </div>
-                            </div>
+                                </div> */}
+                            {/* </div> */}
                         </div>
                         <div className="col-lg-3 col-md-6">
                             <h4 className="text-white mb-3">Stay Updated</h4>
