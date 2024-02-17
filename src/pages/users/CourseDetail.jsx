@@ -6,9 +6,12 @@ import BreadcrumbSection from '../../components/users/BreadcrumbSection';
 import Footer from '../../components/users/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
-import { Button, Container, Row, Col, Card, Form ,Alert} from 'react-bootstrap';
+import { Button, Container, Row, Col, Card, Form, Alert } from 'react-bootstrap';
 import courses from './courses';
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
+import { database } from '../../assets/config/firebase';
+import { ref, push } from 'firebase/database';
 
 const CourseDetail = () => {
     const { courseId } = useParams();
@@ -40,7 +43,7 @@ const CourseDetail = () => {
 
     const sendMessageToTelegram = async (formData) => {
         try {
-            const response = await axios.post(
+            await axios.post(
                 'https://api.telegram.org/bot6838834920:AAHz5wL-wxGw_bKPG3ex_dsBYywlljWL5F8/sendMessage',
                 {
                     chat_id: 6431471143,
@@ -56,7 +59,6 @@ const CourseDetail = () => {
                     `
                 }
             );
-            console.log('Message sent:', response.data);
             setSubmitted(true);
             setLoading(false);
         } catch (error) {
@@ -71,11 +73,37 @@ const CourseDetail = () => {
         setLoading(true);
 
         const formData = new FormData(event.target);
-
+        const currentDate = new Date().toISOString();
+        // Save enrollment data to Firebase Realtime Database
+        await push(ref(database, 'enrollments'), {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            phone: formData.get('phone'),
+            address: formData.get('address'),
+            course: course.title,
+            subcategory: subcategoryName,
+            category: categoryName,
+            date: currentDate
+        });
         await sendMessageToTelegram(formData);
     };
     return (
         <>
+            <Helmet>
+                <title>{course && course.title}</title>
+                <meta
+                    name="description"
+                    content={`Learn ${course && course.title} - ${subcategoryName}, ${categoryName}. Enroll now for this course offered by NxtHack IT SOLUTIONS LLP.`}
+                />
+                <meta
+                    property="og:title"
+                    content={course && course.title}
+                />
+                <meta
+                    property="og:description"
+                    content={`Learn ${course && course.title} - ${subcategoryName}, ${categoryName}. Enroll now for this course offered by NxtHack IT SOLUTIONS LLP.`}
+                />
+            </Helmet>
             {loading && <Spinner />}
             <Navbar />
             <BreadcrumbSection
@@ -108,7 +136,7 @@ const CourseDetail = () => {
                                             <p><strong>Students Enrolled:</strong> {course.students_enrolled}</p>
                                         </div>
                                         <div>
-                                            <Button variant="primary" onClick={() => window.location.href=`/contact`}>Enquire Now</Button>
+                                            <Button variant="primary" onClick={() => window.location.href = `/contact`}>Enquire Now</Button>
                                         </div>
                                     </div>
                                 </Card.Body>
@@ -164,11 +192,11 @@ const CourseDetail = () => {
                                     </Form.Group>
                                     <Form.Group className="mb-3" controlId="formSubcategory">
                                         <Form.Label>Subcategory</Form.Label>
-                                        <Form.Control type="text" value={subcategoryName} disabled name="subcategory"/>
+                                        <Form.Control type="text" value={subcategoryName} disabled name="subcategory" />
                                     </Form.Group>
                                     <Form.Group className="mb-3" controlId="formCategory">
                                         <Form.Label>Category</Form.Label>
-                                        <Form.Control type="text" value={categoryName} disabled name="category"/>
+                                        <Form.Control type="text" value={categoryName} disabled name="category" />
                                     </Form.Group>
                                     <Button variant="primary" type="submit">Submit</Button>
                                 </Form>

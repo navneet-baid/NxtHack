@@ -6,6 +6,7 @@ import Footer from '../../components/users/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { faClock } from '@fortawesome/free-solid-svg-icons'; // Add the clock icon
+import { Helmet } from 'react-helmet';
 
 const Certificate = () => {
   const [showDownloadForm, setShowDownloadForm] = useState(false);
@@ -26,6 +27,22 @@ const Certificate = () => {
 
   return (
     <>
+      <Helmet>
+        <title>NxtHack - Certificate</title>
+        <meta
+          name="description"
+          content="Verify and download your certificates from NxtHack. Stay updated with the latest certificates issued by NxtHack IT SOLUTIONS LLP."
+        />
+        <meta
+          property="og:title"
+          content="NxtHack - Certificate"
+        />
+        <meta
+          property="og:description"
+          content="Verify and download your certificates from NxtHack. Stay updated with the latest certificates issued by NxtHack IT SOLUTIONS LLP."
+        />
+        {/* Add more Open Graph (OG) tags as needed */}
+      </Helmet>
       <Spinner />
       <Navbar />
       <BreadcrumbSection

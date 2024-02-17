@@ -1,23 +1,18 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Modal, Form } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import JoinNowModal from './JoinNowModal';
 import SocialFixed from './SocialFixed';
 
 const Navbar = () => {
-    const [showModal, setShowModal] = useState(false);
-
-    const handleModalClose = () => setShowModal(false);
-    const handleModalShow = () => setShowModal(true);
     const handleButtonClick = () => {
         // Redirect to the contact page
         window.location.href = '/contact';
-      };
+    };
     return (
         <>
-              <SocialFixed />
+            <SocialFixed />
 
             <nav className="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
                 <Link to="/" className="navbar-brand d-flex align-items-center p-4 px-lg-5">
@@ -48,7 +43,6 @@ const Navbar = () => {
                     </Button>
                 </div>
             </nav>
-            <JoinNowModal show={showModal} handleClose={handleModalClose} />
 
         </>
     );

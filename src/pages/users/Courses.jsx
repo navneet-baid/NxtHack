@@ -5,7 +5,7 @@ import Navbar from '../../components/users/Navbar';
 import BreadcrumbSection from '../../components/users/BreadcrumbSection';
 import Footer from '../../components/users/Footer';
 import courses from './courses';
-
+import { Helmet } from 'react-helmet';
 const Courses = () => {
     const [loading, setLoading] = useState(false);
     const [subcategories, setSubcategories] = useState([]);
@@ -25,6 +25,13 @@ const Courses = () => {
     }, []);
     return (
         <>
+            <Helmet>
+                <title>Courses - NxtHack IT SOLUTIONS LLP</title>
+                <meta
+                    name="description"
+                    content="Explore a wide range of courses offered by NxtHack IT SOLUTIONS LLP. From programming to web development, data science, cybersecurity, and more, enhance your skills and advance your career with our comprehensive learning experiences."
+                />
+            </Helmet>
             {loading && <Spinner />}
             <Navbar />
             <BreadcrumbSection

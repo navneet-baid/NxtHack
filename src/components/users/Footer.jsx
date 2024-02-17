@@ -1,10 +1,52 @@
-import React from 'react'
+import React, { useState } from 'react';
 import BackToTop from './BackToTop';
 import { NavLink } from 'react-router-dom';
+import { database } from '../../assets/config/firebase';
+import { get, query, ref, orderByChild, equalTo, push } from 'firebase/database';
 const Footer = () => {
+    const [email, setEmail] = useState('');
+
+    const handleEmailChange = (e) => {
+        setEmail(e.target.value);
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (!validateEmail(email)) {
+            alert('Invalid email address. Please enter a valid email address.');
+            return;
+        }
+
+        try {
+            // Check if email already exists
+            const snapshot = await get(query(ref(database, 'subscribers'), orderByChild('email'), equalTo(email)));
+            if (snapshot.exists()) {
+                alert('Email already subscribed. Thank you for your interest!');
+                return;
+            }
+
+            // Get the current date
+            const currentDate = new Date().toISOString();
+
+            // Save email along with the current date to Firebase Realtime Database
+            await push(ref(database, 'subscribers'), { email, date: currentDate });
+            alert('Thank you for subscribing! Your email has been successfully added to our newsletter list.');
+            setEmail('');
+        } catch (error) {
+            console.error('Error saving email:', error);
+            alert('Failed to save email. Please try again later.');
+        }
+    };
+
+
+    const validateEmail = (email) => {
+        // Simple email validation regex
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
+    };
+
     return (
         <>
-            {/* Footer Start */}
             <div className="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
                 <div className="container py-5">
                     <div className="row g-5">
@@ -25,16 +67,26 @@ const Footer = () => {
                             <div className="d-flex pt-2">
                                 <NavLink className="btn btn-outline-light btn-social" to="https://www.youtube.com/@hashCodersClub2001"><i className="fab fa-youtube" /></NavLink>
                                 <NavLink className="btn btn-outline-light btn-social" to="https://www.instagram.com/nxthack_it?igsh=eDh3azY4OWprdjcx"><i className="fab fa-instagram" /></NavLink>
+                                <NavLink className="btn btn-outline-light btn-social" to="https://www.facebook.com/nxthackit"><i className="fab fa-facebook" /></NavLink>
+                                <NavLink className="btn btn-outline-light btn-social" to="https://twitter.com/nxthackit"><i className="fab fa-twitter"></i></NavLink>
                             </div>
                         </div>
                         <div className="col-lg-3 col-md-6"></div>
                         <div className="col-lg-3 col-md-6">
                             <h4 className="text-white mb-3">Stay Updated</h4>
                             <p>Sign up for our newsletter to receive the latest updates, news, and exclusive offers directly to your inbox.</p>
-                            <div className="position-relative mx-auto" style={{ maxWidth: 400 }}>
-                                <input className="form-control border-0 w-100 py-3 ps-4 pe-5" type="email" placeholder="Your email" />
-                                <button type="submit" className="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Sign Up</button>
-                            </div>
+                            <form onSubmit={handleSubmit}>
+                                <div className="position-relative mx-auto" style={{ maxWidth: 400 }}>
+                                    <input
+                                        className="form-control border-0 w-100 py-3 ps-4 pe-5"
+                                        type="email"
+                                        placeholder="Your email"
+                                        value={email}
+                                        onChange={handleEmailChange}
+                                    />
+                                    <button type="submit" className="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Sign Up</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -52,12 +104,10 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-            </div >
-            {/* Footer End */}
-            < BackToTop />
-
+            </div>
+            <BackToTop />
         </>
-    )
+    );
 }
 
-export default Footer
+export default Footer;

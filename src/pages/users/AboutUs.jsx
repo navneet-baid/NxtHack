@@ -4,10 +4,19 @@ import Navbar from '../../components/users/Navbar'
 import ServicesSection from '../../components/users/ServicesSection'
 import BreadcrumbSection from '../../components/users/BreadcrumbSection'
 import Footer from '../../components/users/Footer'
+import { Helmet } from 'react-helmet';
 
 const AboutUs = () => {
     return (
         <>
+            <Helmet>
+                <title>About Us - NxtHack</title>
+                <meta
+                    name="description"
+                    content="Learn about NxtHack IT SOLUTIONS LLP, a provider of online courses in programming, web development, data science, cybersecurity, and more. Empower your learning journey with our comprehensive educational experiences."
+                />
+                {/* Add more meta tags as needed */}
+            </Helmet>
             <Spinner />
             <Navbar />
             <BreadcrumbSection

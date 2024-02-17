@@ -4,6 +4,9 @@ import Navbar from '../../components/users/Navbar';
 import BreadcrumbSection from '../../components/users/BreadcrumbSection';
 import Footer from '../../components/users/Footer';
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
+import { database } from '../../assets/config/firebase';
+import { ref, push } from 'firebase/database';
 
 const ContactUs = () => {
     const [loading, setLoading] = useState(false);
@@ -40,12 +43,36 @@ const ContactUs = () => {
         setLoading(true);
 
         const formData = new FormData(event.target);
-
-        await sendMessageToTelegram(formData);
+        const currentDate = new Date().toISOString();
+        // Save enquiries data to Firebase Realtime Database
+        await push(ref(database, 'enquiries'), {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            subject: formData.get('subject'),
+            message: formData.get('message'),
+            date: currentDate
+        });
+        // await sendMessageToTelegram(formData);
     };
 
     return (
         <>
+            <Helmet>
+                <title>NxtHack - Contact Us</title>
+                <meta
+                    name="description"
+                    content="Contact NxtHack IT SOLUTIONS LLP for any queries or feedback. Reach out to us via email, phone, or by filling out the contact form."
+                />
+                <meta
+                    property="og:title"
+                    content="NxtHack - Contact Us"
+                />
+                <meta
+                    property="og:description"
+                    content="Contact NxtHack IT SOLUTIONS LLP for any queries or feedback. Reach out to us via email, phone, or by filling out the contact form."
+                />
+                {/* Add more Open Graph (OG) tags as needed */}
+            </Helmet>
             {loading && <Spinner />}
             <Navbar />
             <BreadcrumbSection
@@ -107,13 +134,13 @@ const ContactUs = () => {
                                     </div>
                                     <div className="col-md-6">
                                         <div className="form-floating">
-                                            <input type="email" className="form-control" id="email" name="email" placeholder="Your Email" required  />
+                                            <input type="email" className="form-control" id="email" name="email" placeholder="Your Email" required />
                                             <label htmlFor="email">Your Email</label>
                                         </div>
                                     </div>
                                     <div className="col-12">
                                         <div className="form-floating">
-                                            <input type="text" className="form-control" id="subject" name="subject" placeholder="Subject" required  />
+                                            <input type="text" className="form-control" id="subject" name="subject" placeholder="Subject" required />
                                             <label htmlFor="subject">Subject</label>
                                         </div>
                                     </div>

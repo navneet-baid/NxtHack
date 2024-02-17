@@ -8,10 +8,24 @@ import Footer from '../../components/users/Footer';
 import JoinNowModal from '../../components/users/JoinNowModal';
 import courses from './courses';
 import { NavLink } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
+
 
 const Home = () => {
   return (
     <>
+      <Helmet>
+        <title>NxtHack - Empower Your Future</title>
+        <meta
+          name="description"
+          content="NxtHack IT SOLUTIONS LLP provides online courses to students in various categories such as programming, web development, data science, cybersecurity, and more. Empower your future with our comprehensive learning experiences."
+        />
+        <meta
+          name="keywords"
+          content="NxtHack, IT Solutions, online courses, programming, web development, data science, cybersecurity"
+        />
+        {/* Add more meta tags as needed */}
+      </Helmet>
       <Spinner />
       <Navbar />
       <Carousel />

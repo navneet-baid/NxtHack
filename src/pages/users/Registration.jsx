@@ -5,6 +5,8 @@ import BreadcrumbSection from '../../components/users/BreadcrumbSection';
 import Footer from '../../components/users/Footer';
 import courses from './courses';
 import axios from 'axios';
+import { database } from '../../assets/config/firebase';
+import { ref, push } from 'firebase/database';
 
 const Registration = () => {
     const [subcategories, setSubcategories] = useState([]);
@@ -44,7 +46,18 @@ const Registration = () => {
         for (const [key, value] of formData.entries()) {
             message += `${key}: ${value}\n`;
         }
-
+        // Save registration data to Firebase Realtime Database
+        await push(ref(database, 'registration'), {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            phone: formData.get('phone'),
+            course: formData.get('course'),
+            branch: formData.get('branch'),
+            address: formData.get('address'),
+            city: formData.get('city'),
+            country: formData.get('country'),
+            zip: formData.get('zip')
+        });
         // Send message to Telegram bot
         await sendMessageToTelegram(message);
 
