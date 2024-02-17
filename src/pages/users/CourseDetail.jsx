@@ -144,23 +144,23 @@ const CourseDetail = () => {
                                 <Form onSubmit={handleEnrollment}>
                                     <Form.Group className="mb-3" controlId="formName">
                                         <Form.Label>Name</Form.Label>
-                                        <Form.Control type="text" placeholder="Enter your name" name="name"/>
+                                        <Form.Control type="text" placeholder="Enter your name" name="name" required />
                                     </Form.Group>
                                     <Form.Group className="mb-3" controlId="formEmail">
                                         <Form.Label>Email</Form.Label>
-                                        <Form.Control type="email" placeholder="Enter your email" name="email"/>
+                                        <Form.Control type="email" placeholder="Enter your email" name="email" required />
                                     </Form.Group>
                                     <Form.Group className="mb-3" controlId="formPhone">
                                         <Form.Label>Phone Number</Form.Label>
-                                        <Form.Control type="tel" placeholder="Enter your phone number" name="phone"/>
+                                        <Form.Control type="tel" placeholder="Enter your phone number" name="phone" required />
                                     </Form.Group>
                                     <Form.Group className="mb-3" controlId="formAddress">
                                         <Form.Label>Address</Form.Label>
-                                        <Form.Control type="text" placeholder="Enter your address"name="address" />
+                                        <Form.Control type="text" placeholder="Enter your address" name="address" required />
                                     </Form.Group>
                                     <Form.Group className="mb-3" controlId="formCourse">
                                         <Form.Label>Course Name</Form.Label>
-                                        <Form.Control type="text" value={course && course.title} disabled name="course"/>
+                                        <Form.Control type="text" value={course && course.title} disabled name="course" />
                                     </Form.Group>
                                     <Form.Group className="mb-3" controlId="formSubcategory">
                                         <Form.Label>Subcategory</Form.Label>
