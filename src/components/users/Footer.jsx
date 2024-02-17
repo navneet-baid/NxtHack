@@ -27,6 +27,7 @@ const Footer = () => {
                                 <NavLink className="btn btn-outline-light btn-social" to="https://www.instagram.com/nxthack_it?igsh=eDh3azY4OWprdjcx"><i className="fab fa-instagram" /></NavLink>
                             </div>
                         </div>
+                        <div className="col-lg-3 col-md-6"></div>
                         <div className="col-lg-3 col-md-6">
                             <h4 className="text-white mb-3">Stay Updated</h4>
                             <p>Sign up for our newsletter to receive the latest updates, news, and exclusive offers directly to your inbox.</p>
@@ -35,7 +36,6 @@ const Footer = () => {
                                 <button type="submit" className="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Sign Up</button>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <div className="container">
